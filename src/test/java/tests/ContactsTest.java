@@ -13,11 +13,27 @@ public class ContactsTest extends BaseTest {
         loginPage.login(USER, PASSWORD);
         contactsPage.open();
         contactsPage.NewButtonClick();
-        contactsPage.createContact(new Contact("Mrs.", "bla", "Press", "bla2",
-                "bla3", "TMS", "bla4", "randomName", "blafa@mail.ru", "bla6", "bla7",
-                "bla8", "bla9", "bla10", "bla11", "lalala"));
+        contactsPage.createContact(
+                Contact.builder()
+                        .salutation("Mrs.")
+                        .firstName("bla")
+                        .middleName("bla")
+                        .lastName("Press")
+                        .suffix("bla2")
+                        .accountName("TMS")
+                        .title("TMS")
+                        .Department("bla4")
+                        .email("blafa@mail.ru")
+                        .fax("bla6")
+                        .phone("bla7")
+                        .mobile("bla8")
+                        .mailingCountry("bla9")
+                        .mailingCity("bla10")
+                        .mailingZip("bla11")
+                        .mailingStreet("lalala")
+                        .build());
         contactsPage.save();
         contactsPage.open();
-        assertEquals(contactsPage.getNameAddedRecordByIndex("1"), "bla Press bla2 bla3");
+        assertEquals(contactsPage.getNameAddedRecordByIndex("1"), "bla bla Press bla2");
     }
 }

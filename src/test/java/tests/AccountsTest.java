@@ -36,16 +36,16 @@ public class AccountsTest extends BaseTest {
         assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TMS");
     }
 
-//    @Test
-//    public void accountCreateWithEnteringName() {
-//        loginPage.open();
-//        loginPage.login(USER, PASSWORD);
-//        accountPage.open();
-//        accountPage.newButtonClick();
-//        accountPage.createAccountWithEnteringName(Account.builder().name("TeachMeSkills").build());
-//        accountPage.save();
-//        accountPage.open();
-//        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TeachMeSkills");
-//    }
+    @Test
+    public void accountCreateWithEnteringName() {
+        loginPage.open();
+        loginPage.login(USER, PASSWORD);
+        accountPage.open();
+        accountPage.newButtonClick();
+        accountPage.createAccountWithEnteringName(Account.builder().name("TeachMeSkills").build());
+        accountPage.save();
+        accountPage.open();
+        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TeachMeSkills");
+    }
 
 }

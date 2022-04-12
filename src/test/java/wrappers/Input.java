@@ -1,15 +1,15 @@
 package wrappers;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.BasePage;
 
-import java.time.Duration;
-
+@Log4j2
 public class Input {
     WebDriver driver;
     String label;
+    public final static By WAIT_LOCATOR = By.xpath("//input[@aria-expanded='true']");
     String writeForContact = "//div[contains(@class, 'windowViewMode-n')]//*[text()='%s']/ancestor::*[contains(@class, 'slds-form-element_')][1]//input",
             elementOfSelect = "//span[@title = '%s']";
 
@@ -20,16 +20,13 @@ public class Input {
     }
 
     public void write(String text) {
+        log.info("Writing {} into {}", text, label);
         driver.findElement(By.xpath(String.format(writeForContact, label))).sendKeys(text);
     }
 
     public void insertIntoSearch(String text) {
         driver.findElement(By.xpath(String.format(writeForContact, label))).click();
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath(String.format("//input[@aria-expanded='true']"))));
+        BasePage.wait(WAIT_LOCATOR);
         driver.findElement(By.xpath(String.format(elementOfSelect, text))).click();
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath(String.format("//input[@placeholder ='%s']", text))));
     }
-
 }

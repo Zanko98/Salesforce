@@ -11,7 +11,7 @@
         <testng.version>7.4.0</testng.version>
         <selenium.version>4.1.2</selenium.version>
         <webdrivermanager.version>5.1.0</webdrivermanager.version>
-        <allure.version>2.13.9</allure.version>
+        <allure.version>2.17.3</allure.version>
         <aspectj.version>1.9.9</aspectj.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -43,6 +43,28 @@
     </build>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+
+        <!--Для считывания yaml-файлов -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>

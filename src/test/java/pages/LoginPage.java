@@ -10,14 +10,13 @@ public class LoginPage extends BasePage {
             LOGIN_BUTTON = By.id("Login"),
             ERROR_MESSAGE = By.id("error"),
             CHECKBOX = By.id("rememberUn");
-    String url = "https://login.salesforce.com/";
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     public void open() {
-        driver.get(url);
+        driver.get(baseUrl);
         wait(LOGIN_BUTTON);
     }
 

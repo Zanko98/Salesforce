@@ -12,12 +12,25 @@ public class AccountsTest extends BaseTest {
         loginPage.open();
         loginPage.login(USER, PASSWORD);
         accountPage.open();
-        accountPage.NewButtonClick();
+        accountPage.newButtonClick();
         accountPage.createAccount(new Account("TMS", "bla", "bla", "bla", "bla",
                 "bla", "bla", "bla", "bla", "bla",
                 "bla", "Press", "Banking", "bla", "bla", "bla"));
         accountPage.save();
         accountPage.open();
-        assertEquals(accountPage.getNameAddedAccount(), "TMS");
+        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TMS");
     }
+
+    @Test
+    public void accountCreateWithEnteringName() {
+        loginPage.open();
+        loginPage.login(USER, PASSWORD);
+        accountPage.open();
+        accountPage.newButtonClick();
+        accountPage.createAccountWithEnteringName(new Account("TeachMeSkills"));
+        accountPage.save();
+        accountPage.open();
+        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TeachMeSkills");
+    }
+
 }

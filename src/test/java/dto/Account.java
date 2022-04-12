@@ -24,8 +24,4 @@ public class Account {
             description,
             billingStreet,
             shippingStreet;
-
-    public Account(String name) {
-        this.name = name;
-    }
 }

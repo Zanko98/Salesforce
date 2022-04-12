@@ -13,24 +13,39 @@ public class AccountsTest extends BaseTest {
         loginPage.login(USER, PASSWORD);
         accountPage.open();
         accountPage.newButtonClick();
-        accountPage.createAccount(new Account("TMS", "bla", "bla", "bla", "bla",
-                "bla", "bla", "bla", "bla", "bla",
-                "bla", "Press", "Banking", "bla", "bla", "bla"));
+        accountPage.createAccount(Account.builder()
+                .name("TMS")
+                .website("bla")
+                .phone("bla")
+                .billingCity("bla")
+                .billingZipCode("bla")
+                .billingStateCode("bla")
+                .billingCountry("bla")
+                .shippingCity("bla")
+                .shippingZipCode("bla")
+                .shippingState("bla")
+                .shippingCountry("bla")
+                .type("Press")
+                .industry("Banking")
+                .description("bla")
+                .billingStreet("bla")
+                .shippingStreet("bla")
+                .build());
         accountPage.save();
         accountPage.open();
         assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TMS");
     }
 
-    @Test
-    public void accountCreateWithEnteringName() {
-        loginPage.open();
-        loginPage.login(USER, PASSWORD);
-        accountPage.open();
-        accountPage.newButtonClick();
-        accountPage.createAccountWithEnteringName(new Account("TeachMeSkills"));
-        accountPage.save();
-        accountPage.open();
-        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TeachMeSkills");
-    }
+//    @Test
+//    public void accountCreateWithEnteringName() {
+//        loginPage.open();
+//        loginPage.login(USER, PASSWORD);
+//        accountPage.open();
+//        accountPage.newButtonClick();
+//        accountPage.createAccountWithEnteringName(Account.builder().name("TeachMeSkills").build());
+//        accountPage.save();
+//        accountPage.open();
+//        assertEquals(accountPage.getNameAddedRecordByIndex("1"), "TeachMeSkills");
+//    }
 
 }
